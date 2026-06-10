@@ -22,9 +22,6 @@ jobs:
             echo "[INFO] Entering project directory..."
             cd /home/ec2-user/student-app
 
-            echo "[INFO] Configuring Git with Secure Secret Token..."
-            git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/abdosaba22/student-appX.git
-
             echo "[INFO] Pulling latest code changes from Git..."
             git pull origin main || (sudo git fetch --all && sudo git reset --hard origin/main)
 
@@ -39,3 +36,6 @@ jobs:
             podman run -d --name app1 -p 8080:80 -e DB_HOST="host.containers.internal" -e DB_USER=abdo -e DB_PASSWORD=123456 -e DB_NAME=applicationDB localhost/student-appx:latest
 
             echo "[INFO] Deployment over GitHub Actions completed successfully! 🎉"
+
+
+
