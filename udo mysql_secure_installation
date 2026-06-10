@@ -1,0 +1,29 @@
+[0;1;32m●[0m mariadb.service - MariaDB 10.11 database server
+     Loaded: loaded (]8;;file://servera/usr/lib/systemd/system/mariadb.service\/usr/lib/systemd/system/mariadb.service]8;;\; [0;1;32menabled[0m; preset: [0;1;38:5:185mdisabled[0m)
+     Active: [0;1;32mactive (running)[0m since Fri 2026-06-05 23:27:37 UTC; 2s ago
+ Invocation: 687c0f0b369a4fd6adf3b600b2c8a202
+       Docs: ]8;;man:mariadbd(8)\man:mariadbd(8)]8;;\
+             ]8;;https://mariadb.com/kb/en/library/systemd/\https://mariadb.com/kb/en/library/systemd/]8;;\
+    Process: 64430 ExecStartPre=/usr/libexec/mariadb-check-socket (code=exited, status=0/SUCCESS)
+    Process: 64453 ExecStartPre=/usr/libexec/mariadb-prepare-db-dir mariadb.service (code=exited, status=0/SUCCESS)
+    Process: 64550 ExecStartPre=/bin/sh -c [ ! -e /usr/bin/galera_recovery ] && VAR= ||   VAR=`/usr/bin/galera_recovery`; [ $? -eq 0 ]   && echo _WSREP_START_POSITION=$VAR > /run/mariadb/wsrep-start-position || exit 1 (code=exited, status=0/SUCCESS)
+    Process: 64562 ExecStartPost=/usr/libexec/mariadb-check-upgrade (code=exited, status=0/SUCCESS)
+    Process: 64593 ExecStartPost=/bin/rm -f /run/mariadb/wsrep-start-position (code=exited, status=0/SUCCESS)
+   Main PID: 64552 (mariadbd)
+     Status: "[0;1;36mTaking your SQL requests now...[0m"
+      Tasks: 9[0;38;5;245m (limit: 22131)[0m
+     Memory: 112.4M (peak: 138.2M)
+        CPU: 628ms
+     CGroup: /system.slice/mariadb.service
+             └─[0;38;5;245m64552 /usr/libexec/mariadbd --basedir=/usr[0m
+
+Jun 05 23:27:37 servera mariadb-prepare-db-dir[64498]: you need to be the system 'mysql' user to connect.
+Jun 05 23:27:37 servera mariadb-prepare-db-dir[64498]: After connecting you can set the password, if you would need to be
+Jun 05 23:27:37 servera mariadb-prepare-db-dir[64498]: able to connect as any of these users with a password and without sudo
+Jun 05 23:27:37 servera mariadb-prepare-db-dir[64498]: See the MariaDB Knowledgebase at https://mariadb.com/kb
+Jun 05 23:27:37 servera mariadb-prepare-db-dir[64498]: Please report any problems at https://mariadb.org/jira
+Jun 05 23:27:37 servera mariadb-prepare-db-dir[64498]: The latest information about MariaDB is available at https://mariadb.org/.
+Jun 05 23:27:37 servera mariadb-prepare-db-dir[64498]: Consider joining MariaDB's strong and vibrant community:
+Jun 05 23:27:37 servera mariadb-prepare-db-dir[64498]: https://mariadb.org/get-involved/
+Jun 05 23:27:37 servera (mariadbd)[64552]: [0;1;38:5:185m[0;1;39m[0;1;38:5:185mmariadb.service: Referenced but unset environment variable evaluates to an empty string: MYSQLD_OPTS, _WSREP_NEW_CLUSTER[0m
+Jun 05 23:27:37 servera systemd[1]: Started mariadb.service - MariaDB 10.11 database server.
