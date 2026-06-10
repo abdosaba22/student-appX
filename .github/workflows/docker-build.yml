@@ -23,19 +23,19 @@ jobs:
             cd /home/ec2-user/student-app
 
             echo "[INFO] Pulling latest code changes from Git..."
-            sudo git pull origin main || (sudo git fetch --all && sudo git reset --hard origin/main)
+            git pull origin main || (git fetch --all && git reset --hard origin/main)
 
             echo "[INFO] Building Image locally using Podman..."
-            sudo podman build -t localhost/student-appx:latest .
+            podman build -t localhost/student-appx:latest .
 
-            echo "[INFO] Stopping and Removing old container if exists..."
-            sudo podman stop app1 || true
-            sudo podman rm app1 || true
+            echo "[INFO] Restarting Container..."
+            podman stop app1 || true
+            podman rm app1 || true
             
             echo "[INFO] Running new container..."
-            sudo podman run -d --name app1 -p 8080:80 -e DB_HOST="host.containers.internal" -e DB_USER=abdo -e DB_PASSWORD=123456 -e DB_NAME=applicationDB localhost/student-appx:latest
+            podman run -d --name app1 -p 8080:80 -e DB_HOST="host.containers.internal" -e DB_USER=abdo -e DB_PASSWORD=123456 -e DB_NAME=applicationDB localhost/student-appx:latest
 
             echo "[INFO] Checking running containers..."
-            sudo podman ps
+            podman ps
 
             echo "[INFO] Deployment over GitHub Actions completed successfully! 🎉"
